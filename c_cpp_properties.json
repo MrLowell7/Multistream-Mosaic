@@ -1,0 +1,25 @@
+{
+  "configurations": [
+    {
+      "name": "MSYS2-MINGW64-GTK3-GStreamer",
+      "includePath": [
+        "${workspaceFolder}/**",
+        "D:/msys64/mingw64/include/gstreamer-1.0",
+        "D:/msys64/mingw64/include/glib-2.0",
+        "D:/msys64/mingw64/lib/glib-2.0/include",
+        "D:/msys64/mingw64/include/gtk-3.0",
+        "D:/msys64/mingw64/include/atk-1.0",
+        "D:/msys64/mingw64/include/cairo",
+        "D:/msys64/mingw64/include/pango-1.0",
+        "D:/msys64/mingw64/include/harfbuzz", 
+        "D:/msys64/mingw64/include/gdk-pixbuf-2.0"
+      ],
+      "defines": [],
+      "compilerPath": "D:/msys64/mingw64/bin/g++.exe",
+      "cStandard": "c17",
+      "cppStandard": "c++17",
+      "intelliSenseMode": "windows-gcc-x64"
+    }
+  ],
+  "version": 4
+}
