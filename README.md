@@ -125,6 +125,15 @@ sudo apt install libgstreamer1.0-dev \
 
 ## Compilación
 
+### VS Code Configuration
+
+El proyecto incluye una carpeta `.vscode` con:
+- `c_cpp_properties.json` (rutas de include y estándar C++)
+- `tasks.json` (comandos de compilación usando MSYS2)
+- `settings.json` (formatos, encoding y ajustes recomendados)
+
+Estas configuraciones permiten compilar el proyecto en Windows con MSYS2 y G++ sin pasos adicionales.
+
 ### Usando CMake
 ```bash
 mkdir build
