@@ -124,6 +124,53 @@ sudo apt install libgstreamer1.0-dev \
 ---
 
 ## Compilación
+La aplicación puede compilarse tanto en Linux como en Windows utilizando MSYS2 MinGW64.
+En ambos casos se usa el mismo comando, gracias al soporte de pkg-config.
+
+### Compilación en Linux (Ubuntu / Debian / Fedora / Arch)
+1. Instalar dependencias
+
+En Ubuntu/Debian:
+
+```bash
+sudo apt install build-essential pkg-config \
+    libgtk-3-dev \
+    libgstreamer1.0-dev \
+    libgstreamer-plugins-base1.0-dev
+```
+
+2. Compilar
+ ```bash
+g++ main.cpp StreamSlot.cpp Watchdog.cpp -o multistream_mosaic \
+    $(pkg-config --cflags --libs gtk+-3.0 gstreamer-1.0 gstreamer-video-1.0)
+```
+
+### Compilación en Windows (MSYS2 MinGW64)
+En MSYS2, con GTK y GStreamer instalados, compile utilizando:
+
+1. Instalar MSYS2 y dependencias
+
+Abrir MSYS2 MinGW64 e instalar lo necesario:
+
+```bash
+pacman -Syu
+pacman -S mingw-w64-x86_64-gcc
+pacman -S mingw-w64-x86_64-pkg-config
+pacman -S mingw-w64-x86_64-gtk3
+pacman -S mingw-w64-x86_64-gstreamer
+pacman -S mingw-w64-x86_64-gst-plugins-base
+```
+Importante: Todo debe instalarse desde MSYS2.
+No sirven las versiones de GTK o GStreamer instaladas por ejecutable .msi.
+
+2. Compilar
+
+Dentro de la shell MSYS2 MinGW64, ejecutar:
+
+```bash
+g++ main.cpp StreamSlot.cpp Watchdog.cpp -o main.exe \
+    $(pkg-config --cflags --libs gtk+-3.0 gstreamer-1.0 gstreamer-video-1.0)
+```
 
 ### VS Code Configuration
 
@@ -132,20 +179,10 @@ El proyecto incluye una carpeta `.vscode` con:
 - `tasks.json` (comandos de compilación usando MSYS2)
 - `settings.json` (formatos, encoding y ajustes recomendados)
 
-Estas configuraciones permiten compilar el proyecto en Windows con MSYS2 y G++ sin pasos adicionales.
+La carpeta `.vscode` incluida en este repositorio contiene configuraciones de Visual Studio Code que sirven únicamente como ejemplo de cómo compilar y ejecutar la aplicación desde el editor.
 
-### Usando CMake
-```bash
-mkdir build
-cd build
-cmake ..
-make
-```
-
-### O usando Makefile
-```bash
-make
-```
+Estas configuraciones no son obligatorias y pueden modificarse o eliminarse según las necesidades del usuario.
+El proyecto puede compilarse sin ellas utilizando los comandos descritos en la sección de compilación.
 
 ---
 
