@@ -31,7 +31,7 @@ El proyecto está optimizado para transmisiones **SRT** y **UDP**, así como par
 ## Estructura del Código
 
 ```
-/src
+/multistream_mosaic
 ├─ main.cpp
 ├─ StreamSlot.cpp
 ├─ StreamSlot.h
@@ -142,7 +142,7 @@ make
 
 ## Transmisión SRT (cliente)
 
-Ejemplo en OBS o ffmpeg:
+Ejemplo en OBS:
 
 ```bash
 srt://<ip-servidor>:<puerto>?streamid=uplive.sls.com/live/stream1
@@ -150,8 +150,19 @@ srt://<ip-servidor>:<puerto>?streamid=uplive.sls.com/live/stream1
 
 ---
 
+## Transmisión UDP (cliente)
+
+Ejemplo usando GStreamer:
+
+```bash
+Emisor:
+gst-launch-1.0 -v d3d11screencapturesrc ! video/x-raw,framerate=60/1 ! queue ! videoconvert ! video/x-raw,format=NV12 ! nvh264enc rc-mode=cbr bitrate=4000 zerolatency=true ! h264parse config-interval=-1 ! rtph264pay config-interval=1 pt=96 ! udpsink host=<IP-servidor> port=<puerto-libre>
+```
+
+---
+
 ## Notas adicionales
 
-- Para baja latencia, usar SRT **en modo caller** desde OBS.
+- Para baja latencia, usar UDP.
 - El watchdog no introduce retardo perceptible.
 - El mosaico puede ampliarse o migrarse a layouts dinámicos.
