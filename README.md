@@ -141,8 +141,7 @@ sudo apt install build-essential pkg-config \
 
 2. Compilar
  ```bash
-g++ main.cpp StreamSlot.cpp Watchdog.cpp -o multistream_mosaic \
-    $(pkg-config --cflags --libs gtk+-3.0 gstreamer-1.0 gstreamer-video-1.0)
+g++ main.cpp StreamSlot.cpp Watchdog.cpp -o multistream_mosaic $(pkg-config --cflags --libs gtk+-3.0 gstreamer-1.0 gstreamer-video-1.0)
 ```
 
 ### Compilación en Windows (MSYS2 MinGW64)
@@ -168,8 +167,7 @@ No sirven las versiones de GTK o GStreamer instaladas por ejecutable .msi.
 Dentro de la shell MSYS2 MinGW64, ejecutar:
 
 ```bash
-g++ main.cpp StreamSlot.cpp Watchdog.cpp -o main.exe \
-    $(pkg-config --cflags --libs gtk+-3.0 gstreamer-1.0 gstreamer-video-1.0)
+g++ main.cpp StreamSlot.cpp Watchdog.cpp -o main.exe $(pkg-config --cflags --libs gtk+-3.0 gstreamer-1.0 gstreamer-video-1.0)
 ```
 
 ### VS Code Configuration
