@@ -42,7 +42,7 @@ El proyecto está optimizado para transmisiones **SRT** y **UDP**, así como par
 
 ---
 
-## **main.cpp**
+## **Main**
 
 - Inicializa GTK.
 - Crea la ventana principal.
@@ -155,7 +155,6 @@ srt://<ip-servidor>:<puerto>?streamid=uplive.sls.com/live/stream1
 Ejemplo usando GStreamer:
 
 ```bash
-Emisor:
 gst-launch-1.0 -v d3d11screencapturesrc ! video/x-raw,framerate=60/1 ! queue ! videoconvert ! video/x-raw,format=NV12 ! nvh264enc rc-mode=cbr bitrate=4000 zerolatency=true ! h264parse config-interval=-1 ! rtph264pay config-interval=1 pt=96 ! udpsink host=<IP-servidor> port=<puerto-libre>
 ```
 
